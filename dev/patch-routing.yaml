@@ -9,16 +9,16 @@ spec:
         - name: springboot
           env:
             - name: SERVER_SERVLET_CONTEXT_PATH
-              value: /tp7
+              value: /tp9
           startupProbe:
             httpGet:
-              path: /tp7/actuator/health/readiness
+              path: /tp9/actuator/health/readiness
           livenessProbe:
             httpGet:
-              path: /tp7/actuator/health/liveness
+              path: /tp9/actuator/health/liveness
           readinessProbe:
             httpGet:
-              path: /tp7/actuator/health/readiness
+              path: /tp9/actuator/health/readiness
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -28,7 +28,7 @@ spec:
   rules:
     - http:
         paths:
-          - path: /tp7
+          - path: /tp9
             pathType: Prefix
             backend:
               service:
