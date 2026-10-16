@@ -2,17 +2,20 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - ../base
+- ../base
 
 images:
-  - name: ghcr.io/killian-pereira/spring-petclinic
-    newTag: latest
+- name: ghcr.io/killian-pereira/spring-petclinic
+  newTag: latest
+- name: spring-petclinic
+  newName: ghcr.io/killian-pereira/spring-petclinic
+  newTag: 80e99dc9132961767c101b2ccd2303c41019068c
 
 patches:
-  - path: replicas.yaml
-    target:
-      group: apps
-      version: v1
-      kind: Deployment
-      name: clinic-deploy
-  - path: patch-routing.yaml
+- path: replicas.yaml
+  target:
+    group: apps
+    kind: Deployment
+    name: clinic-deploy
+    version: v1
+- path: patch-routing.yaml
